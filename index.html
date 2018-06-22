@@ -5,99 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
     <title>GIPHY</title>
 </head>
 <body>
-    <style></style>
-<p id="new"></p>
-<div id="sortedGIFS">
-    </div>
-<div id="topics-list" class="gif-options"></div>
+    <div id="topics-list" class=""></div>
 <form id="topic-form">
-        <label for="topic-input">Would you like to add a new topic?</label>
-        <input type="text" id="topic-input"><br>
+        <label for="topic-input">Add a new topic in the form below</label></br></br>
+        <input type="text" id="topic-input"></br>
         <input id="add-topic" type="submit" value="Submit">
       </form>
-    <script type="text/javascript"> 
-    
-     var topics = ["Test", ""];
 
-  function topicButtons() {
-      $("#topics-list").empty();
- for (var i = 0; i < topics.length; i++) {
-    //   $("#new").append(topics[i]);
-    var topicNames = $("<button>");
-  topicNames.addClass("topic-class");
-  topicNames.attr("topic-data", topics[i]);
-  topicNames.text(topics[i]);
-  $("#topics-list").append(topicNames);
-}};  
-topicButtons(); 
+<div id="sortedGIFS">
+    </div>
 
-   $("#add-topic").on("click", function(event) {
-        event.preventDefault();
-        var topicAdd = $("#topic-input").val();
-        topics.push(topicAdd);
-        $("#topic-input").val(" ");
-        topicButtons();
-      });
-    
-
-
-
-   var API = "";
-   $("button").on("click", function() {
-  var topicData = $(this).attr("topic-data");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicData + "&api_key=" + API + "&limit=10&rating=pg";
-  
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-
-    }).then(function(response){
-        var results = response.data;
-        console.log(response); 
-        emptyDIV();
-        for (var i = 0; i < results.length; i++) {
-            var ratingDiv = $("<div>");
-            var p = $("<p>").text("Rated " + results[i].rating);
-            var gifIMG =$("<img>")
-            gifIMG.attr('src', results[i].images.fixed_height.url);
-            gifIMG.attr("data-still", results[i].images.fixed_height_still.url);
-            gifIMG.attr("data-animate", results[i].images.fixed_height.url);
-            gifIMG.attr("data-state", "still");
-            
-            // (p).appendTo(ratingDiv);
-            // (gifIMG).appendTo(ratingDiv);
-            // $("#sortedGIFS").append(ratingDiv);
-            (ratingDiv).append(p);
-            (ratingDiv).append(gifIMG);
-            $("#sortedGIFS").prepend(ratingDiv);
-        }
-     pauseGIF();
-
-    });
-   
-   } );
-   function pauseGIF() {
-        $(".gif-options").on("click", function() {
-      var state = $(this).attr("data-state");
-      if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
-        $(this).attr("data-state", "animate");
-      } else {
-        $(this).attr("src", $(this).attr("data-still"));
-        $(this).attr("data-state", "still");
-      }
-    });
-   function emptyDIV(){
-    $("#sortedGIFS").empty();
-   }}
-
-  
-
-   
-</script>
+    <script type="text/javascript" src="assets/javascript/app.js" ></script>
 </body>
 </html>
