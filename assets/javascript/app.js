@@ -4,7 +4,7 @@ function emptyDIV(){
 
      var topics = ["Kenny Omega", "Chris Jericho", "Daniel Bryan"];
 //API KEY GOES HERE
-   var API = "";
+   var API = "FBx9fJAi0GnT58Y0DPBHnmH7Zus8rYtB";
    function displayTopics() {
   var topicData = $(this).attr("topic-data");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicData + "&rating=pg-13&api_key=" + API + "&limit=10";
@@ -29,9 +29,6 @@ function emptyDIV(){
             gifIMG.attr("data-state", "still");
             gifIMG.addClass('pause');
             gifIMG.addClass('test');
-            // (p).appendTo(ratingDiv);
-            // (gifIMG).appendTo(ratingDiv);
-            // $("#sortedGIFS").append(ratingDiv);
             (ratingDiv).append(p);
             (ratingDiv).append(gifIMG);
             $("#sortedGIFS").prepend(ratingDiv);
@@ -45,7 +42,6 @@ function emptyDIV(){
    function topicButtons() {
     $("#topics-list").empty();
  for (var i = 0; i < topics.length; i++) {
-    //   $("#new").append(topics[i]);
     var topicNames = $("<button>");
   topicNames.addClass("topic-class");
   topicNames.attr("topic-data", topics[i]);
