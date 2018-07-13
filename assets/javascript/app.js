@@ -26,7 +26,7 @@ function emptyDIV(){
             gifIMG.attr('src', results[i].images.fixed_height.url);
             gifIMG.attr("data-still", results[i].images.fixed_height_still.url);
             gifIMG.attr("data-animate", results[i].images.fixed_height.url);
-            gifIMG.attr("data-state", "still");
+            // gifIMG.attr("data-state", "still");
             gifIMG.addClass('pause');
             gifIMG.addClass('test');
             (ratingDiv).append(p);
@@ -42,6 +42,7 @@ function emptyDIV(){
    function topicButtons() {
     $("#topics-list").empty();
  for (var i = 0; i < topics.length; i++) {
+
     var topicNames = $("<button>");
   topicNames.addClass("topic-class");
   topicNames.attr("topic-data", topics[i]);
@@ -53,10 +54,10 @@ function pauseGIF(){
    $(".pause").on("click", function() {
       var state = $(this).attr("data-state");
       if (state === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("src", $(this).data("animate"));
         $(this).attr("data-state", "animate");
       } else {
-        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("src", $(this).data("still"));
         $(this).attr("data-state", "still");
       }
     });
