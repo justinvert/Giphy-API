@@ -37,7 +37,7 @@ function pauseGIF(){
     });
 }
 ```
-
+This page also allows for adding new search terms.
 <img src="assets/images/topics.png">
 
 To add a search term, enter your topic into the box and click submit.
