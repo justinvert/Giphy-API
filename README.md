@@ -19,6 +19,7 @@ The main purpose of this page is to allow users to grab images from Giphy's API 
             (ratingDiv).append(p);
             (ratingDiv).append(gifIMG);
             $("#sortedGIFS").prepend(ratingDiv);
+            ...
     
 ```
 One of the challenges presented with this code was having to find a way to stop the gifs from playing. To do this, it focuses on an <a href="http://api.jquery.com/on/">.on() method</a>, which attaches a click event that allows the gif to be paused. In doing this, it changes the data-state to 'still' to stop and 'animate' to begin again.
@@ -37,6 +38,7 @@ function pauseGIF(){
     });
 }
 ```
+</br>
 This page also allows for adding new search terms.
 <img src="assets/images/topics.png">
 
